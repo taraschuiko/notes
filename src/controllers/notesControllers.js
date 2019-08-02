@@ -1,10 +1,10 @@
 const { addNote } = require("../utils/dataBaseUtils");
+const uuid = require('uuid/v1');
 
 const createNote = (ctx) => {
   const data = ctx.request.body;
-  console.log(data);
   addNote({
-    id: data.id,
+    id: uuid(),
     title: data.title,
     content: data.content
   })
