@@ -14,7 +14,7 @@ module.exports = {
       content: data.content
     });
   },
-  getNote(id) {
-    return NoteModel.find({ id });
+  getNotes() {
+    return NoteModel.find({});
   }
 }
