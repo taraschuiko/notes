@@ -5,7 +5,7 @@ module.exports = {
   setUpConnection() {
     mongoose.connect("mongodb://localhost:27017/notes", { useNewUrlParser: true })
   },
-  createNote(data) {
+  addNote(data) {
     console.log("Adding " + data.title);
 
     return NoteModel.create({
