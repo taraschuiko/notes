@@ -11,7 +11,7 @@ module.exports = {
     })
     ctx.response.body = "Created " + data.title;
   },
-  getNotes() {
+  getNotes(ctx) {
     let data = db.getNotes();
     console.log(data);
     ctx.response.body = data;
