@@ -9,7 +9,7 @@ module.exports = {
     console.log("Adding " + data.title);
 
     return NoteModel.create({
-      id: data.id,
+      _id: data._id,
       title: data.title,
       content: data.content
     });
@@ -18,6 +18,6 @@ module.exports = {
     return NoteModel.find();
   },
   async removeNote(id) {
-    return NoteModel.findByIdAndDelete(id);
+    return await NoteModel.findByIdAndDelete(id);
   }
 }

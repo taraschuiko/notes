@@ -6,24 +6,28 @@ module.exports = {
     try {
       const data = ctx.request.body;
       const newNote = {
-        id: uuid(),
+        _id: uuid(),
         title: data.title,
         content: data.content
       }
       db.addNote(newNote);
       ctx.response.body = newNote;
     } catch(e) {
-      console.error(e);
+      console.error("create note error: ", e);
     }
   },
   async getNotes(ctx) {
     try {
       ctx.response.body = await db.getNotes();
     } catch(e) {
-      console.error(e);
+      console.error("get notes error: ", e);
     }
   },
   async removeNote(ctx) {
-    
+    try {
+      ctx.response.body = await db.removeNote(ctx.request.body._id);
+    } catch(e) {
+      console.error("remove note error: ", e);
+    }
   }
 }
