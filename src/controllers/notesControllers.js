@@ -2,18 +2,24 @@ const db = require("../utils/dataBaseUtils");
 const uuid = require('uuid/v1');
 
 module.exports = {
-  createNote(ctx) {
+  async createNote(ctx) {
     const data = ctx.request.body;
     db.addNote({
       id: uuid(),
       title: data.title,
       content: data.content
+    }).then(data => {
+      console.log("Created new note: ", data)
     })
     ctx.response.body = "Created " + data.title;
   },
-  getNotes(ctx) {
-    let data = db.getNotes();
-    console.log(data);
-    ctx.response.body = data;
+  async getNotes(ctx) {
+    try {
+      let data = await db.getNotes();
+      console.log(data);
+      ctx.response.body = data;
+    } catch(e) {
+      console.error(e);
+    }
   }
 }

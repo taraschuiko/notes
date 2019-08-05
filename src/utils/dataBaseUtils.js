@@ -5,7 +5,7 @@ module.exports = {
   setUpConnection() {
     mongoose.connect("mongodb://localhost:27017/notes", { useNewUrlParser: true })
   },
-  addNote(data) {
+  async addNote(data) {
     console.log("Adding " + data.title);
 
     return NoteModel.create({
@@ -14,7 +14,7 @@ module.exports = {
       content: data.content
     });
   },
-  getNotes() {
-    return NoteModel.find({});
+  async getNotes() {
+    return NoteModel.find();
   }
 }
