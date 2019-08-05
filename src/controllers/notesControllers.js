@@ -23,9 +23,9 @@ module.exports = {
       console.error("get notes error: ", e);
     }
   },
-  async removeNote(ctx) {
+  async deleteNote(ctx) {
     try {
-      ctx.response.body = await db.removeNote(ctx.request.body._id);
+      console.log(await db.deleteNote(ctx.params.id));
     } catch(e) {
       console.error("remove note error: ", e);
     }

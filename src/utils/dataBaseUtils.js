@@ -17,7 +17,7 @@ module.exports = {
   async getNotes() {
     return NoteModel.find();
   },
-  async removeNote(id) {
-    return await NoteModel.findByIdAndDelete(id);
+  deleteNote(id) {
+    return NoteModel.findByIdAndDelete(id);
   }
 }
