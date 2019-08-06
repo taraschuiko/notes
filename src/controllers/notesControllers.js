@@ -1,8 +1,6 @@
 const db = require("../utils/dataBaseUtils");
 const uuid = require('uuid/v1');
 
-const NoteModel = require("../models/note.model");
-
 module.exports = {
   async createNote(ctx) {
     try {
@@ -12,8 +10,10 @@ module.exports = {
         title: data.title,
         content: data.content
       }
-      db.addNote(newNote);
-      ctx.response.body = newNote;
+      if (await db.addNote(newNote)) {
+        ctx.response.status = 200;
+        ctx.response.message = "Added";
+      }
     } catch(e) {
       console.error("create note error: ", e);
     }

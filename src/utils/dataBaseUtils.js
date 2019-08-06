@@ -6,16 +6,14 @@ module.exports = {
     mongoose.connect("mongodb://localhost:27017/notes", { useNewUrlParser: true, useFindAndModify: true })
   },
   async addNote(data) {
-    console.log("Adding " + data.title);
-
-    return NoteModel.create({
+    return await NoteModel.create({
       id: data.id,
       title: data.title,
       content: data.content
     });
   },
   async getNotes() {
-    return NoteModel.find();
+    return await NoteModel.find();
   },
   async deleteNote(id) {
     return await NoteModel.findByIdAndDelete(id);
