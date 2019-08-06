@@ -1,6 +1,8 @@
 const db = require("../utils/dataBaseUtils");
 const uuid = require('uuid/v1');
 
+const NoteModel = require("../models/note.model");
+
 module.exports = {
   async createNote(ctx) {
     try {
@@ -25,9 +27,22 @@ module.exports = {
   },
   async deleteNote(ctx) {
     try {
-      console.log(await db.deleteNote(ctx.params.id));
+      if (await db.deleteNote(ctx.params.id)) {
+        ctx.response.status = 200;
+        ctx.response.message = "Deleted";
+      }
     } catch(e) {
       console.error("remove note error: ", e);
+    }
+  },
+  async updateNote(ctx) {
+    try {
+      if (await db.updateNote(ctx.params.id, ctx.request.body)) {
+        ctx.response.status = 200;
+        ctx.response.message = "Updated";
+      }
+    } catch(e) {
+      console.error('update note error', e);
     }
   }
 }

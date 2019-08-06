@@ -3,13 +3,13 @@ const NoteModel = require("../models/note.model");
 
 module.exports = {
   setUpConnection() {
-    mongoose.connect("mongodb://localhost:27017/notes", { useNewUrlParser: true })
+    mongoose.connect("mongodb://localhost:27017/notes", { useNewUrlParser: true, useFindAndModify: true })
   },
   async addNote(data) {
     console.log("Adding " + data.title);
 
     return NoteModel.create({
-      _id: data._id,
+      id: data.id,
       title: data.title,
       content: data.content
     });
@@ -17,7 +17,10 @@ module.exports = {
   async getNotes() {
     return NoteModel.find();
   },
-  deleteNote(id) {
-    return NoteModel.findByIdAndDelete(id);
+  async deleteNote(id) {
+    return await NoteModel.findByIdAndDelete(id);
+  },
+  async updateNote(id, data) {
+    return await NoteModel.findByIdAndUpdate(id, data);
   }
 }
