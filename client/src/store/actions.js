@@ -7,5 +7,8 @@ export default {
   },
   deleteNote(store, id) {
     axios.delete(`${API_URL}/${id}`).then(() => store.dispatch("loadNotes"));
+  },
+  updateNote(store, newNote) {
+    axios.put(`${API_URL}/${newNote._id}`, newNote).then(() => store.dispatch("loadNotes"));
   }
 };
