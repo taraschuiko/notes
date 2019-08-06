@@ -4,7 +4,7 @@
     <p>{{ note.content }}</p>
     <div class="Note__buttons">
       <button>Edit</button>
-      <button>Delete</button>
+      <button @click="this.delete">Delete</button>
     </div>
   </div>
 </template>
@@ -14,6 +14,11 @@ export default {
   name: "Note",
   props: {
     note: Object
+  },
+  methods: {
+    delete() {
+      this.$store.dispatch("deleteNote", this.note._id);
+    }
   }
 };
 </script>
