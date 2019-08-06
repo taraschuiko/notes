@@ -5,8 +5,8 @@
       <p>{{ note.content }}</p>
     </div>
     <div v-if="this.isEditing">
-      <h2><input type="text" v-model="newTitle"></h2>
-      <p><input type="text" v-model="newContent"></p>
+      <h2><input type="text" v-model="newTitle" /></h2>
+      <p><input type="text" v-model="newContent" /></p>
     </div>
     <div class="Note__buttons">
       <button @click="this.edit" v-if="!this.isEditing">Edit</button>
@@ -50,7 +50,7 @@ export default {
         _id: this.note._id,
         title: this.newTitle,
         content: this.newContent
-      })
+      });
     }
   }
 };
@@ -63,7 +63,8 @@ export default {
   border-radius: 8px;
   margin-bottom: 6px;
 
-  h2, p {
+  h2,
+  p {
     margin: 0 0 8px 0;
     border: 1px solid transparent;
   }
