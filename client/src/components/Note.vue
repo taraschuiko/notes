@@ -1,17 +1,17 @@
 <template>
   <div class="Note">
-    <div v-if="!this.isEditing">
+    <div v-if="!isEditing">
       <h2>{{ note.title }}</h2>
       <p>{{ note.content }}</p>
     </div>
-    <div v-if="this.isEditing">
-      <h2><input type="text" v-model="newTitle" /></h2>
-      <p><input type="text" v-model="newContent" /></p>
+    <div v-if="isEditing">
+      <h2><input type="text" v-model="newTitle" @keyup.enter="update" /></h2>
+      <p><input type="text" v-model="newContent" @keyup.enter="update" /></p>
     </div>
     <div class="Note__buttons">
-      <button @click="this.edit" v-if="!this.isEditing">Edit</button>
-      <button @click="this.update" v-if="this.isEditing">Update</button>
-      <button @click="this.cancelEdit" v-if="this.isEditing">Cancel</button>
+      <button @click="edit" v-if="!isEditing">Edit</button>
+      <button @click="update" v-if="isEditing">Update</button>
+      <button @click="cancelEdit" v-if="isEditing">Cancel</button>
       <button @click="this.delete">Delete</button>
     </div>
   </div>
