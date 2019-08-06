@@ -1,2 +1,24 @@
-/node_modules
-/build
+# Server
+
+/server/node_modules
+/server/build
+
+# Client
+/client/.DS_Store
+/client/node_modules
+/client//dist
+
+/client/.env.local
+/client/.env.*.local
+
+/client/npm-debug.log*
+/client/yarn-debug.log*
+/client/yarn-error.log*
+
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
