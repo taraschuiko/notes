@@ -1,4 +1,6 @@
-## koa-starter
+# Notes
+
+## server
 
 ### What includes:
 
@@ -26,18 +28,48 @@ const routes = combineRouters([root, newRouter]);
 
 * Build:
   ```bash
-  yarn build
+  npm run build
   ```
 * Dev server:
 
   ```bash
-  yarn dev
+  npm run dev
   ```
 
 * Start on your server:
 
   ```bash
-  yarn start
+  npm run start
   ```
 
 ### Its still in progress...
+
+## client
+
+### Project setup
+```
+npm install
+```
+
+#### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+#### Compiles and minifies for production
+```
+npm run build
+```
+
+#### Run your tests
+```
+npm run test
+```
+
+#### Lints and fixes files
+```
+npm run lint
+```
+
+#### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
