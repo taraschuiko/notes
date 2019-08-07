@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const NoteModel = require("../models/note.model");
+const UserModel = require("../models/user.model");
 
 module.exports = {
   setUpConnection() {
@@ -20,5 +21,8 @@ module.exports = {
   },
   async updateNote(id, data) {
     return await NoteModel.findByIdAndUpdate(id, data);
+  },
+  async createUser(data) {
+    return await UserModel.create(data);
   }
 }
