@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import CreateNote from "./CreateNote"
+import CreateNote from "./CreateNote";
 import Note from "./Note";
 
 export default {

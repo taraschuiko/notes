@@ -17,17 +17,17 @@ export default {
     return {
       title: "",
       content: ""
-    }
+    };
   },
   methods: {
     create() {
       this.$store.dispatch("createNote", {
         title: this.title,
         content: this.content
-      })
+      });
       this.title = "";
       this.content = "";
     }
   }
-}
+};
 </script>
