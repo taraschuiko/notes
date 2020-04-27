@@ -13,15 +13,17 @@ setUpConnection();
 const bodyParser = require('koa-bodyparser');
 app.use(bodyParser());
 
-// routes
-const routes = require('./routes');
-app.use(routes);
-
 // auth
 const passport = require('koa-passport');
 require('./utils/googleStrategy');
 app.use(passport.initialize())
 app.use(passport.session())
+
+// routes
+// const routes = require('./routes');
+// app.use(routes);
+const route = require('koa-route');
+app.use(route.get('/auth',  passport.authenticate('google', { scope: ['email', 'profile'] })));
 
 // start server
 require('dotenv').config();
