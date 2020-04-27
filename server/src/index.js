@@ -26,7 +26,11 @@ routes.map(route => app.use(route));
 
 // auth routes
 app.use(route.get('/auth', passport.authenticate('google', { scope: ['email', 'profile'] })));
-app.use(route.get('/callback', (ctx) => ctx.response.message = "Authenticated"));
+app.use(route.get('/callback', passport.authenticate('google', {
+  scope: ['email', 'profile'],
+  successRedirect: '/',
+  failureRedirect: '/auth'
+})));
 
 // start server
 require('dotenv').config();
