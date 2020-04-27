@@ -20,11 +20,13 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // routes
-// const routes = require('./routes');
-// app.use(routes);
 const route = require('koa-route');
+
 app.use(route.get('/auth',  passport.authenticate('google', { scope: ['email', 'profile'] })));
 app.use(route.get('/callback',  (ctx) => ctx.response.message = "Authenticated"));
+
+const routes = require('./routes');
+routes.map(route => app.use(route));
 
 // start server
 require('dotenv').config();

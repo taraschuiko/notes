@@ -1,11 +1,11 @@
-const Router = require('koa-router');
+const route = require('koa-route');
 const controllers = require("../controllers/notesControllers");
 
-const notes = new Router();
+const notesRoutes = [
+  route.post('/notes', controllers.createNote),
+  route.get('/notes', controllers.getNotes),
+  route.delete('/notes/:id', controllers.deleteNote),
+  route.put('/notes/:id', controllers.updateNote),
+];
 
-notes.post('/notes', controllers.createNote)
-  .get('/notes', controllers.getNotes)
-  .delete('/notes/:id', controllers.deleteNote)
-  .put('/notes/:id', controllers.updateNote)
-
-module.exports = notes;
+module.exports = notesRoutes;

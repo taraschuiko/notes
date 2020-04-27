@@ -1,9 +1,9 @@
-const Router = require('koa-router');
+const route = require('koa-route');
 
-const root = new Router();
+const rootRoutes = [
+  route.get('/', async (ctx) => {
+    ctx.body = '<h2>Working..</h2>';
+  })
+];
 
-root.get('/', async (ctx) => {
-  ctx.body = '<h2>Working..</h2>';
-});
-
-module.exports = root;
+module.exports = rootRoutes;
