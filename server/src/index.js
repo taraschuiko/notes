@@ -1,6 +1,10 @@
 const Koa = require('koa');
 const app = new Koa();
 
+// .env
+require('dotenv').config();
+const { PORT, HOST, CALLBACK } = process.env;
+
 // cors
 const cors = require('@koa/cors')
 app.use(cors());
@@ -26,15 +30,13 @@ routes.map(route => app.use(route));
 
 // auth routes
 app.use(route.get('/auth', passport.authenticate('google', { scope: ['email', 'profile'] })));
-app.use(route.get('/callback', passport.authenticate('google', {
+app.use(route.get(CALLBACK, passport.authenticate('google', {
   scope: ['email', 'profile'],
   successRedirect: '/',
   failureRedirect: '/auth'
 })));
 
 // start server
-require('dotenv').config();
-const { PORT, HOST } = process.env;
 app.listen(PORT, () => {
   console.log(`started in http://${HOST}:${PORT}`);
 });

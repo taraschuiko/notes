@@ -21,7 +21,7 @@ function extractProfile(profile) {
 passport.use(new GoogleStrategy({
   clientID: CLIENT_ID,
   clientSecret: CLIENT_SECRET,
-  callbackURL: CALLBACK,
+  callbackURL: `http://${HOST}:${PORT}${CALLBACK}`,
   accessType: 'offline',
   userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
 },
